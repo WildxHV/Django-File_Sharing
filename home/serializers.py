@@ -20,6 +20,7 @@ class FileListSerializer(serializers.Serializer):
                 archive.write(file_path, arcname=file_path.relative_to(directory))
         
     def create(self , validated_data):
+        
         folder = Folder.objects.create()
         files = validated_data.pop('files')
         files_objs = []

@@ -96,11 +96,16 @@
         <h1>Upload Your Files</h1>
     </div>
 
-    <input type="file" class="my-pond mt-4" multiple name="filepond" />
+    <form >
 
-    <div class="text-center">
-        <button class="btn btn-success" onclick="upload_file()">Upload File</button>
-    </div>
+        <input type="file" class="my-pond mt-4" multiple name="filepond" required/>
+    
+        <div class="text-center">
+            <button type="submit" class="btn btn-success" id="submit-button">Upload File</button>
+        </div>
+
+    </form>
+
 
     <div class="carad mt-3" id="btn" style="display: none;">
         <div class="card-body">
@@ -129,9 +134,9 @@
 
         var url = null
 
-        function upload_file() {
+        document.querySelector('#submit-button').addEventListener('click', function (event) {
+            event.preventDefault();
             var files = pond.getFiles()
-
             var formdata = new FormData()
 
             for (var i = 0; i < files.length; i++) {
@@ -154,7 +159,7 @@
 
                 })
 
-        }
+            });
 
         function copyClip() {
             /* Copy the text inside the text field */
